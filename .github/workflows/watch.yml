@@ -1,0 +1,48 @@
+name: Watch deals
+
+on:
+  schedule:
+    # 15 minutes past every hour, UTC. GitHub may start the run later.
+    - cron: "15 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: deal-watch
+  cancel-in-progress: false
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install
+        run: python -m pip install -e .
+
+      - name: Restore offers already sent
+        uses: actions/cache/restore@v4
+        with:
+          path: data/deals.sqlite
+          key: deals-${{ github.run_id }}
+          restore-keys: |
+            deals-
+
+      - name: Scan Tweakers
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: python -m nl_deal_watch --once
+
+      - name: Remember offers already sent
+        if: success()
+        uses: actions/cache/save@v4
+        with:
+          path: data/deals.sqlite
+          key: deals-${{ github.run_id }}

@@ -1,0 +1,29 @@
+# Alert when the cheapest shop price is at least this far below the price
+# of 30 days ago. That is the same "daling" badge Tweakers shows.
+min_drop_percent = 10
+
+# Message again when a deal that was already sent gets this much bigger.
+deepen_points = 5
+
+# How many of the largest current offers to list on the first run.
+digest_limit = 8
+
+# Used by --loop. A cron job running --once can ignore this.
+poll_interval_minutes = 60
+
+# Pause between Tweakers requests.
+request_delay_seconds = 1.0
+
+# Safety cap so a category cannot be paged forever.
+max_pages = 15
+
+categories = [
+    "beamers",
+    "wasmachines",
+    "stofzuigers",
+    "robotstofzuigers",
+]
+
+# Optional Tweakers product pages. These are checked even when the
+# category filter would not include them.
+product_urls = []

@@ -1,0 +1,16 @@
+[project]
+name = "nl-deal-watch"
+version = "0.1.0"
+description = "Telegram alerts when Tweakers categories go on offer."
+requires-python = ">=3.11"
+dependencies = ["requests>=2.32"]
+
+[project.scripts]
+nl-deal-watch = "nl_deal_watch.main:main"
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = ["nl_deal_watch*"]
