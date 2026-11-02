@@ -42,7 +42,9 @@ Or scan once an hour with cron. The path below is an example:
 
 ## Free hosting
 
-The code is public at [MHMALEK/nl-deal-watch](https://github.com/MHMALEK/nl-deal-watch). GitHub’s own computers are blocked by Tweakers, so the hourly scan runs on this Mac through a launch agent at `~/Library/LaunchAgents/nl.deal-watch.plist`. It runs while you are logged in and the Mac is awake.
+The code is public at [MHMALEK/nl-deal-watch](https://github.com/MHMALEK/nl-deal-watch). GitHub’s own computers are blocked by Tweakers. A Grok Bot routine can run this same repo from the Bot’s cloud computer. The instructions are in [GROK.md](GROK.md).
+
+A launch agent at `~/Library/LaunchAgents/nl.deal-watch.plist` also runs the scan on this Mac while you are logged in and the Mac is awake.
 
 Logs go to `data/watch.log`.
 
