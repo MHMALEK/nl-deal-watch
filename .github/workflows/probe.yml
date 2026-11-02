@@ -8,7 +8,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-latest, macos-latest]
+        os: [ubuntu-latest]
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/setup-python@v5
@@ -25,10 +25,12 @@ jobs:
               "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
           )
           urls = [
-              "https://tweakers.net/beamers/vergelijken/?minrpd=0.10",
-              "https://tweakers.net/ajax/price_chart/2322304/nl/",
-              "https://www.kieskeurig.nl/wasmachine",
-              "https://www.beslist.nl/",
+              "https://www.coolblue.nl/beamers",
+              "https://www.coolblue.nl/wasmachines",
+              "https://www.bol.com/nl/nl/l/beamers/10768/",
+              "https://www.mediamarkt.nl/nl/category/beamers-643.html",
+              "https://www.amazon.nl/s?k=beamer",
+              "https://www.idealo.nl/cat/3388/beamer.html",
           ]
           session = requests.Session()
           session.headers["User-Agent"] = ua
