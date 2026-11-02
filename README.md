@@ -42,9 +42,9 @@ Or scan once an hour with cron. The path below is an example:
 
 ## Free hosting
 
-A public GitHub repo can run this every hour on GitHub Actions at no cost. The workflow is `.github/workflows/watch.yml`. The bot token and chat id stay in repository secrets, not in the code. The list of offers already sent is kept in the Actions cache, so a new offer is not announced twice.
+The code is public at [MHMALEK/nl-deal-watch](https://github.com/MHMALEK/nl-deal-watch). GitHub’s own computers are blocked by Tweakers, so the hourly scan runs on this Mac through a launch agent at `~/Library/LaunchAgents/nl.deal-watch.plist`. It runs while you are logged in and the Mac is awake.
 
-The schedule is 15 minutes past every hour, UTC. GitHub sometimes starts a scheduled run later than that. The first cloud run has an empty memory, so it sends the current digest once.
+Logs go to `data/watch.log`.
 
 ## Change what it watches
 

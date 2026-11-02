@@ -1,17 +1,12 @@
 name: Watch deals
 
+# GitHub-hosted runners are blocked by Tweakers (HTTP 403), so this workflow
+# does not run on a schedule. The hourly scan runs on the Mac via launchd.
 on:
-  schedule:
-    # 15 minutes past every hour, UTC. GitHub may start the run later.
-    - cron: "15 * * * *"
   workflow_dispatch:
 
 permissions:
   contents: read
-
-concurrency:
-  group: deal-watch
-  cancel-in-progress: false
 
 jobs:
   scan:
